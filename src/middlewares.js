@@ -1,5 +1,6 @@
 import { validateReg } from "./model.js"
 import jwt from 'jsonwebtoken';
+import { secret } from "./auth/auth.secret.js";
 
 
 
@@ -18,10 +19,9 @@ export const isValidateReg=async (req,res,next)=>{
 //--------------------------middlewarejtw----------------
 
 export const validateJWTAuth = (req, res, next) => {
-    const headerAuth = req.get('Authorization'); 
-    
-    const jwtToken = headerAuth?.split(' ')[1]; 
    
+    const headerAuth = req.get('Authorization'); 
+    const jwtToken = headerAuth?.split(' ')[1]; 
     try{
         const jwtDecoded = jwt.verify(jwtToken, secret);
         req.email = jwtDecoded.user;

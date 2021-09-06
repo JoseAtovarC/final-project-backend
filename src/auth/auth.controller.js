@@ -2,16 +2,17 @@
 import jwt from 'jsonwebtoken';
 import {secret} from './auth.secret.js';
 import { validateLogin } from "../model.js";
+import { encodePassword } from '../utils/auth.utils.js';
 
 
 export const loginJWTController = async(req, res) => {
    
     const { email, password } = req.body;
+    let passwordEncode=encodePassword(password)
    
     const userInfo = await validateLogin(email);
-    console.log( userInfo)
    
-    if (userInfo !== undefined && password === userInfo[0].password) {
+    if (userInfo !== undefined && passwordEncode === userInfo[0].password) {
         
         const token = jwt.sign({user: email}, secret);
    

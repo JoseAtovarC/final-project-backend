@@ -27,8 +27,10 @@ export const createUser = async (email,password,res) => {
   
   console.log('Se ha conectado correctamente');
 
-      const user ={ email:email,
-        password:password}
+      const user ={
+        email:email,
+        password:password
+      }
   const client = await MongoClient.connect(URL);
   const data = await client
         .db('mudanza-app')
@@ -49,7 +51,7 @@ export const createUser = async (email,password,res) => {
           });
           await transporter.sendMail({
             from: 'gurumbertotovar@gmail.com',
-            to: email,
+            to:req.email,
             subject: 'Message',
             html: '<p><b>Hola</p>' +
               '<p> Gracias por registrarte, ya puedes seguir navegando en http://localhost:3000 </p>',

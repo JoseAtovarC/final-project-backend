@@ -1,10 +1,10 @@
 import { validateReg, createUser } from "../model.js"
-import md5 from "md5"
+import {encodePassword} from '../utils/auth.utils.js'
 
 
  export  const retrieveSignupInfoCtrl =async (req, res) => {
-    let password=req.body.password
-    let md5HASH=md5(password)
-    console.log(md5HASH)
-    createUser(req.body.email,md5HASH)
+    let password= encodePassword(req.body.password)
+
+    createUser(req.body.email,password)
+    res.send('okk')
  }

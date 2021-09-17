@@ -1,14 +1,14 @@
-import { validateReg } from "./model.js"
+import { validateReg,validateRegHelper } from "./model.js"
 import jwt from 'jsonwebtoken';
 import { secret } from "./auth/auth.secret.js";
 
 
 
 export const isValidateReg=async (req,res,next)=>{
-    console.log(req.body)
+    
      const check = await validateReg(req.body.email)
-     console.log(check)
-     if(check){
+     const checkHelper=await validateRegHelper(req.body.email)
+     if(check || checkHelper){
          console.log('ya reg')
         res.status(409).send('error');
      }else{
@@ -29,6 +29,5 @@ export const validateJWTAuth = (req, res, next) => {
     }catch(err){
         console.log(err);
         res.status(401).send('Usuario sin token válido');
-    }
-    
+    }    
  }

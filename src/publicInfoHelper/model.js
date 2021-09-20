@@ -19,3 +19,22 @@ export const HelperInfoPublic = async (id) => {
     client.close();
     return data;
   };
+
+  export const countBooking = async (user) => {
+    
+    const info = {
+   
+        emailHelper: user,
+     type:"done"
+    };
+   
+    const client = await MongoClient.connect(URL);
+    const data = await client
+      .db("mudanza-app")
+      .collection("booking")
+      .find(info)
+      .toArray()
+      client.close();
+      return data.length
+  };
+

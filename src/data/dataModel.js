@@ -4,14 +4,14 @@ const URL = 'mongodb+srv://final-project:final-project1@cluster0.ttxbt.mongodb.n
 
 
 export const retrieveHelpersInfo = async () => {
-    const loginValue = {
+    const Value = {
       userType: "ayudante",
     };
     const client = await MongoClient.connect(URL);
     const data = await client
       .db("mudanza-app")
       .collection("ayudantes-registrados")
-      .find(loginValue)
+      .find(Value)
       .toArray();
       client.close();
     return data;

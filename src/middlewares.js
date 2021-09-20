@@ -1,6 +1,7 @@
 import { validateReg,validateRegHelper } from "./model.js"
 import jwt from 'jsonwebtoken';
 import { secret } from "./auth/auth.secret.js";
+import multer from 'multer'
 
 
 
@@ -31,3 +32,15 @@ export const validateJWTAuth = (req, res, next) => {
         res.status(401).send('Usuario sin token válido');
     }    
  }
+
+ //////////////upload
+
+ export const storage = multer.diskStorage({
+    destination: function (req, file, callback) {
+        callback(null, 'public-static');
+    },
+    filename: function (req, file, callback) {
+        callback(null, file.originalname);
+    }
+});
+export const uploadMiddleware = multer({ storage });

@@ -97,15 +97,20 @@ export const createBooking = async (emailToken,body,nameClient,nameHelper) => {
 
   //////UpdateBooking------------------
 
-  export const updateBooking = async (user,helper,emailClient) => {
+  export const updateBooking = async (user,body,startDate,endDate,emailClient) => {
     
     const query = {
       emailHelper: user,
-      nombreClient:helper
+      nombreClient:body.nombreClient,
+      endDate:endDate.toISOString(),
+      startDate:startDate.toISOString()
+      
     };
+    console.log(query)
     const updateDoc={
       $set:{
-        type:"accepted"
+        type:"accepted",
+        message:"leido"
       }
     }
     const client = await MongoClient.connect(URL);
@@ -176,15 +181,22 @@ export const createBooking = async (emailToken,body,nameClient,nameHelper) => {
 
   ////////canceled--------------------------
 
-  export const updateCanceledBooking = async (emailHelper,nameClient,emailClient) => {
+  export const updateCanceledBooking = async (emailHelper,body,startDate,endDate,emailClient) => {
     
    const query = {
       emailHelper: emailHelper,
-      nombreClient:nameClient
+      nombreClient:body. nombreClient,
+      endDate:body.endDate,
+      startDate:body.startDatebody. nombreClient,
+      endDate:endDate.toISOString(),
+      startDate:startDate.toISOString()
+
+     
     };
     const updateDoc={
       $set:{
-        type:"canceled"
+        type:"canceled",
+        message:"leido"
 
       }
     }
@@ -230,7 +242,7 @@ export const createBooking = async (emailToken,body,nameClient,nameHelper) => {
     };
     const updateDoc={
       $set:{
-        confirm:"accepted"
+        message:"clienteLeido"
       }
     }
     const client = await MongoClient.connect(URL);
@@ -253,7 +265,7 @@ export const createBooking = async (emailToken,body,nameClient,nameHelper) => {
     };
     const updateDoc={
       $set:{
-        confirm:"done"
+        type:"done"
       }
     }
     const client = await MongoClient.connect(URL);
@@ -264,6 +276,11 @@ export const createBooking = async (emailToken,body,nameClient,nameHelper) => {
       client.close();
       return data
   };
+
+  
+  
+
+   
   
   
       

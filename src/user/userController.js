@@ -1,5 +1,5 @@
-import { validateLogin, validateHelperLogin } from "../model.js";
-import {updateHelper,updateClient,} from './model.js'
+
+import {updateHelper,updateClient,validateLogin, validateHelperLogin} from './model.js'
 
 
 
@@ -28,9 +28,10 @@ export const updateClientInfoCtrl = async (req, res) => {
  
  }
 
- export const retrieveClientInfoCtrl = async (req, res,next) => {
-    
+ export const retrieveClientInfoCtrl = async (req, res) => {
+    console.log(req.email)
     const clientInfo = await validateLogin(req.email);
+    console.log(clientInfo)
     delete clientInfo.password;
     res.send(clientInfo);
     

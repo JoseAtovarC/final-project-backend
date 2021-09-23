@@ -29,7 +29,8 @@ import {encodePassword, generateRandomEmailToken} from '../utils/auth.utils.js'
     if(userInfo !==null){
       updateUserMailVerification(email);
       deleteToken(email.id)
-      res.status(200).send();}else{
+      res.status(200).send();}
+      else{
         updateUserHelperMailVerification(email);
         deleteToken(email.id)
         res.status(200).send();

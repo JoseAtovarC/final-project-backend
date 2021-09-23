@@ -13,3 +13,5 @@ export const encodePassword = (pass) => {
 export const generateRandomEmailToken = () => {
     return crypto.randomBytes(128).toString('hex');
 }
+
+export const PublicPath = 'static/';

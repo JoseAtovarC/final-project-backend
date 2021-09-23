@@ -39,7 +39,7 @@ export const validateRegHelper = async (user) => {
 
 export const createUser = async (email,password,type,res) => {
   
-  console.log('Se ha conectado correctamente');
+ 
 
       const user ={
         type:"pending..",
@@ -57,7 +57,7 @@ export const createUser = async (email,password,type,res) => {
 
       export const createUserHelper = async (email,password, type,res) => {
   
-        console.log('Se ha conectado correctamente');
+       
       
             const user ={
               type:"pending..",
@@ -116,10 +116,10 @@ export const createUser = async (email,password,type,res) => {
 
 export const validateLogin = async (user,password) => {
   const loginValue = {
-    $or:[
-     { email: user},
-      {password:password}
-    ]
+    
+     email: user,
+      password:password
+    
   };
   const client = await MongoClient.connect(URL);
   const data = await client
@@ -133,10 +133,10 @@ export const validateLogin = async (user,password) => {
 
 export const validateHelperLogin = async (user,password) => {
   const loginValue = {
-    $or:[
-      { email: user},
-       {password:password}
-     ]
+    
+       email: user,
+       password:password
+     
   };
   const client = await MongoClient.connect(URL);
   const data = await client

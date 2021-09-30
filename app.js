@@ -1,14 +1,14 @@
 import express from 'express'
 import cors from 'cors'
 import multer from 'multer'
-import signupRouter from './src/signup/signupRouter.js'
-import userRouter from './src/user/userRouter.js'
-import userAuth from './src/auth/auth.router.js'
-import dataRouter from './src/data/dataRouter.js'
-import publicInfo from './src/publicInfoHelper/PublicRouter.js'
-import bookingRouter from './src/booking/BookingRouter.js'
-import reviewRouter from './src/reviews/reviewsRouter.js'
-import uploadRouter from './src/upload/uploadRouter.js'
+import signupRouter from './my-app/src/signup/signupRouter.js'
+import userRouter from './my-app/src/user/userRouter.js'
+import userAuth from './my-app/src/auth/auth.router.js'
+import dataRouter from './my-app/src/data/dataRouter.js'
+import publicInfo from './my-app/src/publicInfoHelper/PublicRouter.js'
+import bookingRouter from './my-app/src/booking/BookingRouter.js'
+import reviewRouter from './my-app/src/reviews/reviewsRouter.js'
+import uploadRouter from './my-app/src/upload/uploadRouter.js'
 
 const app = express()
 const port = process.env.PORT|| 4000

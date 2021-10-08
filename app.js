@@ -10,8 +10,9 @@ import bookingRouter from './src/booking/BookingRouter.js'
 import reviewRouter from './src/reviews/reviewsRouter.js'
 import uploadRouter from './src/upload/uploadRouter.js'
 
+
 const app = express()
-const port = process.env.PORT|| 4000
+
 
 app.use(express.json()) 
 app.use(express.urlencoded({ extended: true })) 
@@ -27,7 +28,7 @@ app.use('/static', express.static('public-static'));
 app.use('/upload', uploadRouter); 
 
 
-  app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
-  })
+app.listen(process.env.PORT || 4000, function(){
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
 

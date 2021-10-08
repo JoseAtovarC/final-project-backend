@@ -11,8 +11,7 @@ export const loginJWTController = async(req, res) => {
     let passwordEncode=encodePassword(password)
     const userInfo = await validateLogin(email,passwordEncode);
     const helperInfo = await validateHelperLogin(email,passwordEncode);
-    console.log(helperInfo)
-
+   
     if (userInfo !== null){
         const token = jwt.sign({user: email, type:userInfo.userType}, secret);
         res.send({

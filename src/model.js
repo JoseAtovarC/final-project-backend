@@ -106,7 +106,7 @@ export const createUser = async (email,password,type,res) => {
                   to:email,
                   subject: 'Message',
                   html: '<p><b>Hola</p>' +
-                    `<p> Gracias por registrarte, verifica tu email  <a href="http://localhost:3000/signup?token=${tokenEmail}">Verificar</a>`,
+                    `<p> Gracias por registrarte, verifica tu email  <a href="https://gomoving.herokuapp.com/signup?token=${tokenEmail}">Verificar</a>`,
                 })   
             }
 
